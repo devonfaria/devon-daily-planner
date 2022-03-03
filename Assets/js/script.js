@@ -24,6 +24,11 @@ var determineTime = function () {
   dayDisplay.innerHTML = currentTime;
 };
 
+var hourColor = function () {
+  var timeCheck = moment().format('h a')
+  console.log(timeCheck);
+}
+hourColor();
 // Captures text from input field
 var captureText = function () {  
   objectForStorage.event = document.querySelector('.description').value;
