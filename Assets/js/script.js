@@ -1,6 +1,6 @@
 // STORING VARIABLES
 var saveButton = document.querySelector('.saveBtn');
-var textArea = document.querySelector('.text');
+var textArea = document.querySelector('.description');
 var dayDisplay = document.getElementById('currentDay');
 
 saveButton.addEventListener('click', function () {
@@ -12,7 +12,12 @@ saveButton.addEventListener('click', function () {
 var determineTime = function () {
   var currentTime = moment().format('dddd, MMMM Do');
   dayDisplay.innerHTML = currentTime;
-  dayDisplay.style.backgroundColor = 'black';
+}
+
+var captureText = function () {
+  var inputForStorage = document.querySelector('.description').
+
 }
 
 determineTime();
+test();
