@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  justify-content: center;
 }
 
 textarea {
@@ -20,6 +21,10 @@ textarea {
   border-radius: 0;
   border-bottom: 10px solid black;
 }
+
+/* .container {
+  display: flex;
+} */
 
 .description {
   white-space: pre-wrap;
@@ -63,6 +68,10 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .saveBtn i:hover {
