@@ -4,50 +4,34 @@ var dayDisplay = document.getElementById('currentDay');
 var containerBlock = document.querySelector('.container');
 
 // STARTING VARIABLES
-var totalScheduleObject = {
-  hour: '9am',
-  event: 'frgrger',
-};
-
-// STORING FUNCTIONS
-// Captures text from input field
-var saveButton = document.querySelector('.saveBtn');
-$(document).on('click', '.saveBtn', function() {
-  var hourEvent = $(this).siblings('.description').val();
-  console.log(hourEvent);
-  localStorage.setItem('schedule', hourEvent);
-  // storeSchedule;
-});
-
-// // PULLING LOCALSTORAGE
-// var pullSchedule = function () {
-//   var data = JSON.parse(localStorage.getItem("schedule"));
-//   for (var i = 0; i < data.length; i++) {
-//     console.log($(`#${i}`).val());
-//     var input;
-//     input = data[i];
-//     input = $(`#${i}`).val();
-//     // console.log(data[i]);
-//     // console.log(input);
-//   }
-// }
-
-// BROKEN STORAGE FUNCTION
-// var position = Number($(this).siblings('textarea').attr('id'));
-// var event1 = $(this).siblings('.description').val();
-// totalScheduleObject.splice(position,1,event1);
-
-// SETS AND RETRIEVES LOCAL STORAGE DATA
-var test = JSON.stringify(totalScheduleObject);
-console.log(test);
-localStorage.setItem('schedule', test);
-var data = localStorage.getItem('schedule');
-JSON.parse(data);
-console.log(data);
+var totalScheduleObject = [];
 
 // POSTING DATE TO TOP OF PAGE
 var postedTime = moment().format('dddd, MMMM Do')
 document.getElementById('currentDay').textContent = postedTime;
+
+// STORING FUNCTIONS
+
+// SAVE BUTTON: Captures text from input field and stores it to localStorage
+var saveButton = document.querySelector('.saveBtn');
+$(document).on('click', '.saveBtn', function() {
+  var hourEvent = $(this).siblings('.description').val();
+  var position = Number($(this).attr('name'));
+  totalScheduleObject[position] = hourEvent;
+  // console.log(totalScheduleObject);
+  localStorage.setItem('schedule', totalScheduleObject);
+  storeSchedule();
+});
+
+// STORES DATA FUNCTION - inserts into an array
+var storeSchedule = function () {
+  var test = JSON.stringify(totalScheduleObject);
+  console.log(test);
+  localStorage.setItem('schedule', test);
+  var data = localStorage.getItem('schedule');
+  var object = JSON.parse(data);
+  console.log(object);
+}
 
 // LOOP THAT GENERATES THE BODY DIV ELEMENTS
 for (var i = 9; i < 18; i++) {
@@ -88,19 +72,17 @@ for (var i = 9; i < 18; i++) {
   hourBlock.textContent = blockTime;
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-  textBlock.textContent = 
+  // NEED TO STYLE the text for input field
+  // textBlock.textContent = data[i].event;
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
   buttonBlock.innerHTML = '<i class="fas fa-save"></i>';
+  buttonBlock.name = (i - 9);
 
   // Appending children to elements
   timeBlock.append(hourBlock, textBlock, buttonBlock);
   containerBlock.append(timeBlock);
 };
 
-var storeSchedule = function () {
-  var item = JSON.stringify(totalScheduleObject)
-  localStorage.setItem("schedule", item)
-}
 
 
