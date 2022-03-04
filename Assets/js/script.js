@@ -1,5 +1,13 @@
 // DEFINING INTERACTABLES
 var saveButton = document.querySelector('.saveBtn');
+$(document).on('click', '.saveBtn', function(event) {
+  var hour1 = $(this).siblings('.hour').text();
+  var event1 = $(this).siblings('.description').val();
+  objectForStorage.hour = hour1;
+  objectForStorage.event = event1;
+  console.log(objectForStorage);
+});
+
 var textArea = document.querySelector('.description');
 var dayDisplay = document.getElementById('currentDay');
 
@@ -11,17 +19,14 @@ var objectForStorage = {
 };
 
 // BUTTON FUNCTIONALITY
-saveButton.addEventListener('click', function (event) {
-  console.log('captured the text!');
-  captureText();
-});
+saveButton.addEventListener('click', captureText);
 
 // STORING FUNCTIONS
 // seeing selector in function for 
 var test = function () {
   document.querySelector('.hour').innerHTML = '9am';
 };
-test();
+
 
 // Time Call Function
 var determineTime = function () {
@@ -50,4 +55,14 @@ var captureText = function (hour) {
   localStorage.setItem('schedule', item);
 };
 
+
+// BUTTON FUNCTIONALITY
+// button.addEventListener('click', function () {
+//   var parent = saveButton.parentElement
+//   var time = parent.querySelector('.hour').textContent;
+//   objectForStorage.hour
+//   console.log(time);
+// });
 determineTime();
+
+// console.log(saveButton.parentElement.div.innerHTML);
