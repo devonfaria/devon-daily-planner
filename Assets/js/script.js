@@ -12,6 +12,7 @@ var saveButton = document.querySelector('.saveBtn');
 $(document).on('click', '.saveBtn', function() {
   var hourEvent = $(this).siblings('.description').val();
   console.log(hourEvent);
+  localStorage.setItem('schedule', hourEvent);
   // storeSchedule;
 });
 
