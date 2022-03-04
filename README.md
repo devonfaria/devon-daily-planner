@@ -2,6 +2,9 @@
 
 [Link to working page](https://devonfaria.github.io/devon-daily-planner/)
 
+
+
+
 ## Table of Contents
 
 * [Description](#description)
@@ -9,9 +12,19 @@
 * [Support](#Support)
 * [Contributions](#contributions)
 
+
+
+
 ## Description
 
-Welcome to the daily planner application that I created to help you save daily tasks. When you click the save button, the text input for the sibling textarea will be saved an object in localStorage for the window, so that whenever you load this application, it shows saved content.
+Welcome to the daily planner application! Here, you can input daily tasks to a certain timeblock and save that content to the timeblock. When you click the save button, the text input for the sibling textarea will be saved an array in localStorage for the window. 
+
+Whenever you reload this application, it uses the position in the for loop target a position in the stored array, and then take the array content at that position and dynamically enter the text into the loop-generated textarea at tht position.
+
+Additionally, the timeblocks will show white if they have passed for the current day, show red if it is that current hour, and show green if it is an upcoming hour in the current day. 
+
+
+
 
 ## Visuals
 
@@ -23,36 +36,16 @@ This is what you page should look like if there is content in localStorage that 
 
 ![alt text](./assets/images/Work-Day-Scheduler-filled.png)
 
+
+
+
 ## Support
 
 Contact me at devonfaria@gmail.com if you need assistance downloading or activating this repository.
 
+
+
+
 ## Contributions
 
-A huge thank you to the UNCC Virtual Bootcamp for providing me with the knowledge to create such an intricate function, and the support to code it correctly!
-
-GIVEN I am using a daily planner to create a schedule
-
-WHEN I open the planner ✅
-
-THEN the current day is displayed  at the top of the calendar ✅
-
-WHEN I scroll down ✅
-
-THEN I am presented with timeblocks for standard business hours ✅
-
-WHEN I view the timeblocks for that day ✅
-
-THEN each timeblock is color coded to indicate whether it is in the past, present, or future ✅
-
-WHEN I click into a timeblock ✅
-
-THEN I can enter an event ✅
-
-WHEN I click the save button for that timeblock ⛔
-
-THEN the text for that event is saved in local storage ⛔
-
-WHEN I refresh the page ⛔
-
-THEN the saved events persist ⛔
+A huge thank you to Sasha Peters for helping me determine how to properly load the HTML page with elements using a for loop, and for properly parsing the information when retrieving from localStorage. A savior, I say!

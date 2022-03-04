@@ -4,22 +4,25 @@ var dayDisplay = document.getElementById('currentDay');
 var containerBlock = document.querySelector('.container');
 
 // STARTING VARIABLES
+// array to collect input from textareas and store to localStorage
 var totalScheduleObject = [];
+// Variable containing the array from localStorage
 var data = JSON.parse(localStorage.getItem('schedule'));
-console.log(data);
+
 // POSTING DATE TO TOP OF PAGE
-var postedTime = moment().format('dddd, MMMM Do')
-document.getElementById('currentDay').textContent = postedTime;
+var postedDay = moment().format('dddd, MMMM Do')
+document.getElementById('currentDay').textContent = postedDay;
 
-// STORING FUNCTIONS
-
-// SAVE BUTTON: Captures text from input field and stores it to localStorage
+// SAVE BUTTON FUNCTIONALITY
 var saveButton = document.querySelector('.saveBtn');
 $(document).on('click', '.saveBtn', function() {
+  // captures neighboring textarea's input in a variable
   var hourEvent = $(this).siblings('.description').val();
+  // Determines which position in the array to fill using name attribute
   var position = Number($(this).attr('name'));
+  // replaces position in array with input from textarea
   totalScheduleObject[position] = hourEvent;
-  // console.log(totalScheduleObject);
+  // 
   localStorage.setItem('schedule', totalScheduleObject);
   storeSchedule();
 });
@@ -31,10 +34,9 @@ var storeSchedule = function () {
   localStorage.setItem('schedule', test);
   var data = localStorage.getItem('schedule');
   var object = JSON.parse(data);
-  console.log(object);
 }
 
-// LOOP THAT GENERATES THE BODY DIV ELEMENTS
+// FOR LOOP THAT GENERATES THE TIME BLOCKS (divs inside the container div)
 for (var i = 9; i < 18; i++) {
   // Determines the element variables to style and append
   var blockTime = i;
@@ -66,21 +68,24 @@ for (var i = 9; i < 18; i++) {
   }
 
   // STYLING DIV ELEMENTS
+
   // Time Block Div
   timeBlock.classList.add('row', 'time-block');
+
   // Hour Block Styling
   hourBlock.classList.add('col-1', 'hour');
   hourBlock.textContent = blockTime;
+
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-  // NEED TO STYLE the text for input field
   textBlock.textContent = data[i-9];
+
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
   buttonBlock.innerHTML = '<i class="fas fa-save"></i>';
   buttonBlock.name = (i - 9);
 
-  // Appending children to elements
+  // Appending dynamically created children to elements
   timeBlock.append(hourBlock, textBlock, buttonBlock);
   containerBlock.append(timeBlock);
 };
