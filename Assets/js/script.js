@@ -7,7 +7,8 @@ var containerBlock = document.querySelector('.container');
 // array to collect input from textareas and store to localStorage
 var totalScheduleObject = [];
 // Variable containing the array from localStorage
-var data = JSON.parse(localStorage.getItem('schedule'));
+var data = [];
+data = JSON.parse(localStorage.getItem('schedule'));
 
 // POSTING DATE TO TOP OF PAGE
 var postedDay = moment().format('dddd, MMMM Do')
