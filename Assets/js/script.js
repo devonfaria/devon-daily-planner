@@ -5,7 +5,8 @@ var containerBlock = document.querySelector('.container');
 
 // STARTING VARIABLES
 var totalScheduleObject = [];
-
+var data = JSON.parse(localStorage.getItem('schedule'));
+console.log(data);
 // POSTING DATE TO TOP OF PAGE
 var postedTime = moment().format('dddd, MMMM Do')
 document.getElementById('currentDay').textContent = postedTime;
@@ -73,7 +74,7 @@ for (var i = 9; i < 18; i++) {
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
   // NEED TO STYLE the text for input field
-  // textBlock.textContent = data[i].event;
+  textBlock.textContent = data[i-9];
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
   buttonBlock.innerHTML = '<i class="fas fa-save"></i>';
