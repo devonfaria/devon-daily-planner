@@ -10,11 +10,9 @@ var totalScheduleObject = {};
 // Captures text from input field
 var saveButton = document.querySelector('.saveBtn');
 $(document).on('click', '.saveBtn', function() {
-  var position = Number($(this).siblings('textarea').attr('id'));
-  var event1 = $(this).siblings('.description').val();
-  totalScheduleObject.splice(position,1,event1);
-  var item = JSON.stringify(totalScheduleArray);
-  localStorage.setItem('schedule', item);
+  var hourEvent = $(this).siblings('.description').val();
+  console.log(hourEvent);
+  // storeSchedule;
 });
 
 // // PULLING LOCALSTORAGE
@@ -30,7 +28,13 @@ $(document).on('click', '.saveBtn', function() {
 //   }
 // }
 
+// BROKEN STORAGE FUNCTION
+// var position = Number($(this).siblings('textarea').attr('id'));
+// var event1 = $(this).siblings('.description').val();
+// totalScheduleObject.splice(position,1,event1);
+
 // var data = JSON.parse('schedule')
+// POSTING DATE TO TOP OF PAGE
 var postedTime = moment().format('dddd, MMMM Do')
 document.getElementById('currentDay').textContent = postedTime;
 
@@ -83,5 +87,9 @@ for (var i = 9; i < 18; i++) {
   containerBlock.append(timeBlock);
 };
 
+var storeSchedule = function () {
+  var item = JSON.stringify(totalScheduleObject)
+  localStorage.setItem("schedule", item)
+}
 
 
