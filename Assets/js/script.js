@@ -31,6 +31,8 @@ $(document).on('click', '.saveBtn', function() {
 // }
 
 // var data = JSON.parse('schedule')
+var postedTime = moment().format('dddd, MMMM Do')
+document.getElementById('currentDay').textContent = postedTime;
 
 // LOOP THAT GENERATES THE BODY DIV ELEMENTS
 for (var i = 9; i < 18; i++) {
@@ -71,6 +73,7 @@ for (var i = 9; i < 18; i++) {
   hourBlock.textContent = blockTime;
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
+  textBlock.textContent = 
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
   buttonBlock.innerHTML = '<i class="fas fa-save"></i>';
