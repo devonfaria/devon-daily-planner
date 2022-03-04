@@ -1,9 +1,9 @@
 // DEFINING INTERACTABLES
 var textArea = document.querySelector('.description');
 var dayDisplay = document.getElementById('currentDay');
-
+var containerBlock = document.querySelector('.container');
 // STARTING VARIABLES
-var totalScheduleArray = ['0','1','2','3','4','5','6','7','8', '9'];
+var totalScheduleObject = {};
 
 // STORING FUNCTIONS
 
@@ -29,25 +29,49 @@ var pullSchedule = function () {
     // console.log(input);
   }
 }
-
-$(document).on('click', '#beer', function() {
-  pullSchedule();
-  console.log('Hey!');
-});
-
-// Time Call Function
-var determineTime = function () {
-  var currentTime = moment().format('dddd, MMMM Do');
-  dayDisplay.innerHTML = currentTime;
+// for loops that generates
+// var data = JSON.parse('schedule')
+for (var i = 9; i < 18; i++) {
+  var blockTime = i;
+  var checkTime = moment().format('H');
+  console.log(checkTime);
+  if (blockTime > 12) {
+    blockTime = i - 12;
+  }
+  if (i < 12) {
+    blockTime += 'am';
+  } else {
+    blockTime += 'pm';
+  }
+  
+  // Time Block Div
+  
+  var timeBlock = document.createElement('div');
+  timeBlock.classList.add('row', 'time-block');
+  // Hour Block Div
+  var hourBlock = document.createElement('div');
+  hourBlock.classList.add('col-1', 'hour');
+  hourBlock.textContent = blockTime;
+// Text Block
+  var textBlock = document.createElement('textarea');
+  textBlock.classList.add('description', 'col-10');
+  // Button Block
+  var buttonBlock = document.createElement('button');
+  buttonBlock.classList.add('col-1', 'saveBtn');
+  buttonBlock.innerHTML = '<i class="fas fa-save"></i>';
+  // Appending children to elements
+  // if (i = checkTime) {
+  //   textBlock.classList.add('present');
+  //   console.log('Present');
+  // } if (i > checkTime) {
+  //   textBlock.classList.add('future');
+  //   console.log('Future');
+  // } else {
+  //   textBlock.classList.add('past');
+  //   console.log('Past');
+  // }
+  timeBlock.append(hourBlock, textBlock, buttonBlock);
+  containerBlock.append(timeBlock);
 };
 
-// BROKEN determines color of text body
-var hourColor = function () {
-  var timeCheck = moment().format('h');
-  if (timeCheck = ($('textarea') {
-    // this.style.backgroundColor = yellow;
-  }
-}
 
-hourColor();
-determineTime();

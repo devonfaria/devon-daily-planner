@@ -1,5 +1,4 @@
-# devon-daily-planner
-# Devon Faria - Quiz Game
+# Devon Faria - Daily-Planner
 
 [Link to working page](https://devonfaria.github.io/quiz-game/)
 
