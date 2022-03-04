@@ -2,6 +2,7 @@
 var textArea = document.querySelector('.description');
 var dayDisplay = document.getElementById('currentDay');
 var containerBlock = document.querySelector('.container');
+
 // STARTING VARIABLES
 var totalScheduleObject = {};
 
@@ -17,23 +18,32 @@ $(document).on('click', '.saveBtn', function() {
   localStorage.setItem('schedule', item);
 });
 
-// PULLING LOCALSTORAGE
-var pullSchedule = function () {
-  var data = JSON.parse(localStorage.getItem("schedule"));
-  for (var i = 0; i < data.length; i++) {
-    console.log($(`#${i}`).val());
-    var input;
-    input = data[i];
-    input = $(`#${i}`).val();
-    // console.log(data[i]);
-    // console.log(input);
-  }
-}
-// for loops that generates
+// // PULLING LOCALSTORAGE
+// var pullSchedule = function () {
+//   var data = JSON.parse(localStorage.getItem("schedule"));
+//   for (var i = 0; i < data.length; i++) {
+//     console.log($(`#${i}`).val());
+//     var input;
+//     input = data[i];
+//     input = $(`#${i}`).val();
+//     // console.log(data[i]);
+//     // console.log(input);
+//   }
+// }
+
+// LOOP THAT GENERATES THE BODY DIV ELEMENTS
+
 // var data = JSON.parse('schedule')
+
 for (var i = 9; i < 18; i++) {
+  // Determines the element variables to style and append
   var blockTime = i;
   var checkTime = moment().format('H');
+  var timeBlock = document.createElement('div');
+  var textBlock = document.createElement('textarea')
+  var hourBlock = document.createElement('div');
+  var buttonBlock = document.createElement('button');
+  
   console.log(checkTime);
   if (blockTime > 12) {
     blockTime = i - 12;
@@ -43,35 +53,37 @@ for (var i = 9; i < 18; i++) {
   } else {
     blockTime += 'pm';
   }
+  // Color changing conditional
+  if (checkTime = blockTime) {
+    textBlock.classList.add('present');
+    console.log('Present');
+  } else if (checkTime > blockTime) {
+    textBlock.classList.add('future');
+    console.log('Future');
+  } else {
+    textBlock.classList.add('past');
+    console.log('Past');
+  };
   
   // Time Block Div
   
-  var timeBlock = document.createElement('div');
   timeBlock.classList.add('row', 'time-block');
-  // Hour Block Div
-  var hourBlock = document.createElement('div');
+  // STYLING
+  // Hour Block Styling
   hourBlock.classList.add('col-1', 'hour');
   hourBlock.textContent = blockTime;
-// Text Block
-  var textBlock = document.createElement('textarea');
+
+  // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-  // Button Block
-  var buttonBlock = document.createElement('button');
+
+  // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
   buttonBlock.innerHTML = '<i class="fas fa-save"></i>';
+
   // Appending children to elements
-  // if (i = checkTime) {
-  //   textBlock.classList.add('present');
-  //   console.log('Present');
-  // } if (i > checkTime) {
-  //   textBlock.classList.add('future');
-  //   console.log('Future');
-  // } else {
-  //   textBlock.classList.add('past');
-  //   console.log('Past');
-  // }
   timeBlock.append(hourBlock, textBlock, buttonBlock);
   containerBlock.append(timeBlock);
 };
+
 
 
