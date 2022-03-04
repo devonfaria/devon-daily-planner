@@ -1,3 +1,15 @@
+
+
+var textArea = document.querySelector('.description');
+var dayDisplay = document.getElementById('currentDay');
+
+// STARTING VARIABLES
+var totalScheduleArray = ['0','1','2','3','4','5','6','7','8', '9', '10', '11', '12'];
+var objectForStorage = {
+  hour: '',
+  event: '',
+};
+
 // DEFINING INTERACTABLES
 var saveButton = document.querySelector('.saveBtn');
 $(document).on('click', '.saveBtn', function(event) {
@@ -6,20 +18,15 @@ $(document).on('click', '.saveBtn', function(event) {
   objectForStorage.hour = hour1;
   objectForStorage.event = event1;
   console.log(objectForStorage);
+  var number = parseInt(hour1.replace(/[^0-9.]/g, ""));
+  console.log(number);
+  totalScheduleArray.splice(Number(number),1,objectForStorage);
+  var item = JSON.stringify(totalScheduleArray);
+  localStorage.setItem('schedule', item);
 });
 
-var textArea = document.querySelector('.description');
-var dayDisplay = document.getElementById('currentDay');
-
-// STARTING VARIABLES
-var totalScheduleArray = ['0','1','2','3','4','5','6','7','8',];
-var objectForStorage = {
-  hour: '',
-  event: '',
-};
-
 // BUTTON FUNCTIONALITY
-saveButton.addEventListener('click', captureText);
+// saveButton.addEventListener('click', captureText);
 
 // STORING FUNCTIONS
 // seeing selector in function for 
@@ -45,15 +52,13 @@ var hourColor = function () {
 }
 
 // Captures text from input field
-var captureText = function (hour) {  
-  // Storing hour and event to local variable, not pushed to array yet
-  objectForStorage.event = document.querySelector('.description').value;
-  objectForStorage.hour = 9;
-  console.log(objectForStorage);
-  totalScheduleArray.splice(hour,1,objectForStorage);
-  var item = JSON.stringify(totalScheduleArray);
-  localStorage.setItem('schedule', item);
-};
+// var captureText = function (hour) {  
+//   // Storing hour and event to local variable, not pushed to array yet
+//   console.log(objectForStorage);
+//   totalScheduleArray.splice(hour,1,objectForStorage);
+//   var item = JSON.stringify(totalScheduleArray);
+//   localStorage.setItem('schedule', item);
+// };
 
 
 // BUTTON FUNCTIONALITY
