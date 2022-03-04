@@ -78,7 +78,7 @@ for (var i = 9; i < 18; i++) {
 
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-  textBlock.textContent = data[i-9];
+  textBlock.textContent = data[i - 9];
 
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
