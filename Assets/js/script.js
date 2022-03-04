@@ -4,7 +4,10 @@ var dayDisplay = document.getElementById('currentDay');
 var containerBlock = document.querySelector('.container');
 
 // STARTING VARIABLES
-var totalScheduleObject = {};
+var totalScheduleObject = {
+  hour: '9am',
+  event: 'frgrger',
+};
 
 // STORING FUNCTIONS
 // Captures text from input field
@@ -34,7 +37,14 @@ $(document).on('click', '.saveBtn', function() {
 // var event1 = $(this).siblings('.description').val();
 // totalScheduleObject.splice(position,1,event1);
 
-// var data = JSON.parse('schedule')
+// SETS AND RETRIEVES LOCAL STORAGE DATA
+var test = JSON.stringify(totalScheduleObject);
+console.log(test);
+localStorage.setItem('schedule', test);
+var data = localStorage.getItem('schedule');
+JSON.parse(data);
+console.log(data);
+
 // POSTING DATE TO TOP OF PAGE
 var postedTime = moment().format('dddd, MMMM Do')
 document.getElementById('currentDay').textContent = postedTime;
