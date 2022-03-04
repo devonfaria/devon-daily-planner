@@ -1,39 +1,39 @@
-
-
+// DEFINING INTERACTABLES
 var textArea = document.querySelector('.description');
 var dayDisplay = document.getElementById('currentDay');
 
 // STARTING VARIABLES
-var totalScheduleArray = ['0','1','2','3','4','5','6','7','8', '9', '10', '11', '12'];
-var objectForStorage = {
-  hour: '',
-  event: '',
-};
+var totalScheduleArray = ['0','1','2','3','4','5','6','7','8', '9'];
 
-// DEFINING INTERACTABLES
+// STORING FUNCTIONS
+
+// Captures text from input field
 var saveButton = document.querySelector('.saveBtn');
-$(document).on('click', '.saveBtn', function(event) {
-  var hour1 = $(this).siblings('.hour').text();
+$(document).on('click', '.saveBtn', function() {
+  var position = Number($(this).siblings('textarea').attr('id'));
   var event1 = $(this).siblings('.description').val();
-  objectForStorage.hour = hour1;
-  objectForStorage.event = event1;
-  console.log(objectForStorage);
-  var number = parseInt(hour1.replace(/[^0-9.]/g, ""));
-  console.log(number);
-  totalScheduleArray.splice(Number(number),1,objectForStorage);
+  totalScheduleArray.splice(position,1,event1);
   var item = JSON.stringify(totalScheduleArray);
   localStorage.setItem('schedule', item);
 });
 
-// BUTTON FUNCTIONALITY
-// saveButton.addEventListener('click', captureText);
+// PULLING LOCALSTORAGE
+var pullSchedule = function () {
+  var data = JSON.parse(localStorage.getItem("schedule"));
+  for (var i = 0; i < data.length; i++) {
+    console.log($(`#${i}`).val());
+    var input;
+    input = data[i];
+    input = $(`#${i}`).val();
+    // console.log(data[i]);
+    // console.log(input);
+  }
+}
 
-// STORING FUNCTIONS
-// seeing selector in function for 
-var test = function () {
-  document.querySelector('.hour').innerHTML = '9am';
-};
-
+$(document).on('click', '#beer', function() {
+  pullSchedule();
+  console.log('Hey!');
+});
 
 // Time Call Function
 var determineTime = function () {
@@ -43,31 +43,11 @@ var determineTime = function () {
 
 // BROKEN determines color of text body
 var hourColor = function () {
-  var timeCheck = moment().format('h a');
-  // add variable to check against for header hour time slot on block
-  if (timeCheck = 0) {
-
+  var timeCheck = moment().format('h');
+  if (timeCheck = ($('textarea') {
+    // this.style.backgroundColor = yellow;
   }
-  console.log(timeCheck);
 }
 
-// Captures text from input field
-// var captureText = function (hour) {  
-//   // Storing hour and event to local variable, not pushed to array yet
-//   console.log(objectForStorage);
-//   totalScheduleArray.splice(hour,1,objectForStorage);
-//   var item = JSON.stringify(totalScheduleArray);
-//   localStorage.setItem('schedule', item);
-// };
-
-
-// BUTTON FUNCTIONALITY
-// button.addEventListener('click', function () {
-//   var parent = saveButton.parentElement
-//   var time = parent.querySelector('.hour').textContent;
-//   objectForStorage.hour
-//   console.log(time);
-// });
+hourColor();
 determineTime();
-
-// console.log(saveButton.parentElement.div.innerHTML);
