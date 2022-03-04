@@ -7,13 +7,12 @@ var containerBlock = document.querySelector('.container');
 var totalScheduleObject = {};
 
 // STORING FUNCTIONS
-
 // Captures text from input field
 var saveButton = document.querySelector('.saveBtn');
 $(document).on('click', '.saveBtn', function() {
   var position = Number($(this).siblings('textarea').attr('id'));
   var event1 = $(this).siblings('.description').val();
-  totalScheduleArray.splice(position,1,event1);
+  totalScheduleObject.splice(position,1,event1);
   var item = JSON.stringify(totalScheduleArray);
   localStorage.setItem('schedule', item);
 });
@@ -31,10 +30,9 @@ $(document).on('click', '.saveBtn', function() {
 //   }
 // }
 
-// LOOP THAT GENERATES THE BODY DIV ELEMENTS
-
 // var data = JSON.parse('schedule')
 
+// LOOP THAT GENERATES THE BODY DIV ELEMENTS
 for (var i = 9; i < 18; i++) {
   // Determines the element variables to style and append
   var blockTime = i;
@@ -43,7 +41,7 @@ for (var i = 9; i < 18; i++) {
   var textBlock = document.createElement('textarea')
   var hourBlock = document.createElement('div');
   var buttonBlock = document.createElement('button');
-  
+
   // Color changing conditional
   if (checkTime > blockTime) {
     textBlock.classList.add('past');
@@ -55,7 +53,7 @@ for (var i = 9; i < 18; i++) {
     textBlock.classList.add('present');
   };
 
-  console.log('check time: ' + checkTime, 'block time: ' + blockTime);
+  // AM/PM Conditional
   if (blockTime > 12) {
     blockTime = i - 12;
   }
@@ -64,21 +62,15 @@ for (var i = 9; i < 18; i++) {
   } else {
     blockTime += 'pm';
   }
-  // Color changing conditional
-  
-  console.log('check time: ' + checkTime, 'block time: ' + blockTime);
-  
+
+  // STYLING DIV ELEMENTS
   // Time Block Div
-  
   timeBlock.classList.add('row', 'time-block');
-  // STYLING
   // Hour Block Styling
   hourBlock.classList.add('col-1', 'hour');
   hourBlock.textContent = blockTime;
-
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
   buttonBlock.innerHTML = '<i class="fas fa-save"></i>';

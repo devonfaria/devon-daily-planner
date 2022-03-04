@@ -1,6 +1,6 @@
 # Devon Faria - Daily-Planner
 
-[Link to working page](https://devonfaria.github.io/quiz-game/)
+[Link to working page](https://devonfaria.github.io/devon-daily-planner/)
 
 ## Table of Contents
 
@@ -11,30 +11,17 @@
 
 ## Description
 
-Welcome to the quiz game I created! Once you click the start button, you will switch to a question page where you will be presented with a question and 4 possible answers. 
-
-Clicked answers are compared against the correct answer by comparing innerHTML elements to the correct answer. Correct answers will cause their score to raise by 1. Your score will remain the same and your seconds left will detract 5 seconds if you are incorrect. Both correct and incorrect answers will load the next question until question 10. 
-
-Then you will be presented with your final score, on the end screen, and you can input your initials and score to a highscore page. This page stores the last set of highscore details.
+Welcome to the daily planner application that I created to help you save daily tasks. When you click the save button, the text input for the sibling textarea will be saved an object in localStorage for the window, so that whenever you load this application, it shows saved content.
 
 ## Visuals
 
 The following layout is what you can expect to see on your browser.
 
-This is the loading screen before you begin the quiz.
-![alt text](./assets/images/Quiz-Game-start2.png)
+![alt text](./assets/images/Work-Day-Scheduler-start.png)
 
-This is the screen with a question. All answers are clickable and the timer will run in the upper right hand corner. 
+This is what you page should look like if there is content in localStorage that has been saved previously.
 
-![alt text](./assets/images/Quiz-Game-question2.png)
-
-Once the timer reaches zero or the questions are completed, the game will flip to this screen.
-
-![alt text](./assets/images/Quiz-Game-end2.png)
-
-Once you submit your initials on the end screen, then your will save them to your localStorage. This page displays the last score. 
-
-![alt text](./assets/images/Quiz-Game-highscore2.png)
+![alt text](./assets/images/Work-Day-Scheduler-filled.png)
 
 ## Support
 
