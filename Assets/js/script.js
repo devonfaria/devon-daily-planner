@@ -44,7 +44,18 @@ for (var i = 9; i < 18; i++) {
   var hourBlock = document.createElement('div');
   var buttonBlock = document.createElement('button');
   
-  console.log(checkTime);
+  // Color changing conditional
+  if (checkTime > blockTime) {
+    textBlock.classList.add('past');
+  }
+  if (checkTime < blockTime) {
+    textBlock.classList.add('future');
+  } 
+  if (checkTime == blockTime) {
+    textBlock.classList.add('present');
+  };
+
+  console.log('check time: ' + checkTime, 'block time: ' + blockTime);
   if (blockTime > 12) {
     blockTime = i - 12;
   }
@@ -54,16 +65,8 @@ for (var i = 9; i < 18; i++) {
     blockTime += 'pm';
   }
   // Color changing conditional
-  if (checkTime = blockTime) {
-    textBlock.classList.add('present');
-    console.log('Present');
-  } else if (checkTime > blockTime) {
-    textBlock.classList.add('future');
-    console.log('Future');
-  } else {
-    textBlock.classList.add('past');
-    console.log('Past');
-  };
+  
+  console.log('check time: ' + checkTime, 'block time: ' + blockTime);
   
   // Time Block Div
   
