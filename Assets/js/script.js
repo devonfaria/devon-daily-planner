@@ -6,9 +6,19 @@ var containerBlock = document.querySelector('.container');
 // STARTING VARIABLES
 // array to collect input from textareas and store to localStorage
 var totalScheduleObject = [];
-// Variable containing the array from localStorage
-var data = [];
-data = JSON.parse(localStorage.getItem('schedule'));
+
+// Function checking if there is localStorage, and if so, setting totalScheduleArray to the stored value for dynamic loading
+var checkIfData = function () {
+  var data = [];
+  data = JSON.parse(localStorage.getItem('schedule'));
+  if (typeof data !== 'object') {
+  return
+  } else {
+    totalScheduleObject = data;
+    return totalScheduleObject;
+  }
+};
+checkIfData();
 
 // POSTING DATE TO TOP OF PAGE
 var postedDay = moment().format('dddd, MMMM Do')
@@ -79,10 +89,7 @@ for (var i = 9; i < 18; i++) {
 
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-  var test = function () {
-  textBlock.textContent = data[i - 9];
-  };
-  test ();
+  textBlock.textContent = totalScheduleObject[i - 9];
 
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
