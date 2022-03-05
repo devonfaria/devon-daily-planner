@@ -34,7 +34,7 @@ var storeSchedule = function () {
   console.log(test);
   localStorage.setItem('schedule', test);
   var data = localStorage.getItem('schedule');
-  var object = JSON.parse(data);
+  var object = JSON.parse(data) || [];
 }
 
 // FOR LOOP THAT GENERATES THE TIME BLOCKS (divs inside the container div)
