@@ -89,7 +89,12 @@ for (var i = 9; i < 18; i++) {
 
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-  textBlock.textContent = totalScheduleObject[i - 9];
+  if (totalScheduleObject[i] = null) {
+    textBlock.textContent = '';
+  } else {
+    textBlock.textContent = totalScheduleObject[i - 9];
+  }
+  
 
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
