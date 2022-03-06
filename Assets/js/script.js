@@ -5,23 +5,7 @@ var containerBlock = document.querySelector('.container');
 
 // STARTING VARIABLES
 // array to collect input from textareas and store to localStorage
-// var totalScheduleObject = [];
 var totalScheduleObject = JSON.parse(localStorage.getItem('schedule')) || [];
-
-// Function checking if there is localStorage, and if so, setting totalScheduleArray to the stored value for dynamic loading
-var checkIfData = function () {
-  var data = [];
-  var testStorage = typeof window !== 'undefined' ? localStorage.getItem('schedule'):
-  totalScheduleObject = ['', '', '', '', '', '', '', '', '',]
-  data = JSON.parse(testStorage);
-  if (typeof data !== 'object') {
-  return totalScheduleObject = ['', '', '', '', '', '', '', '', '',];
-  } else {
-    totalScheduleObject = data;
-    return totalScheduleObject;
-  }
-};
-
 
 // POSTING DATE TO TOP OF PAGE
 var postedDay = moment().format('dddd, MMMM Do')
@@ -36,17 +20,15 @@ $(document).on('click', '.saveBtn', function() {
   var position = Number($(this).attr('name'));
   // replaces position in array with input from textarea
   totalScheduleObject[position] = hourEvent;
-  // 
   localStorage.setItem('schedule', totalScheduleObject);
   storeSchedule();
-});
+  }
+);
 
 // STORES DATA FUNCTION - inserts into an array
 var storeSchedule = function () {
   var test = JSON.stringify(totalScheduleObject);
-  console.log(test);
   localStorage.setItem('schedule', test);
-  var data = localStorage.getItem('schedule');
 };
 
 // FOR LOOP THAT GENERATES THE TIME BLOCKS (divs inside the container div)
@@ -91,17 +73,8 @@ for (var i = 9; i < 18; i++) {
 
   // Textarea Block Styling
   textBlock.classList.add('description', 'col-10');
-  // TEST
-  // const testStorage = typeof window !== 'undefined' ? localStorage.getItem('schedule'):
-  // console.log(testStorage);
-
-  // if (!totalScheduleObject[i - 9]) {
-  //   textBlock.textContent = '';
-  // } else {
   textBlock.textContent = totalScheduleObject[i - 9];
-  // };
   
-
   // Button Block Styling
   buttonBlock.classList.add('col-1', 'saveBtn');
   buttonBlock.innerHTML = '<i class="fas fa-save"></i>';
@@ -111,6 +84,3 @@ for (var i = 9; i < 18; i++) {
   timeBlock.append(hourBlock, textBlock, buttonBlock);
   containerBlock.append(timeBlock);
 };
-
-
-
