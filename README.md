@@ -30,11 +30,11 @@ Additionally, the timeblocks will show white if they have passed for the current
 
 The following layout is what you can expect to see on your browser.
 
-![alt text](./assets/images/Work-Day-Scheduler-start.png)
+![alt text](./Assets/images/Work-Day-Scheduler-start.png)
 
 This is what you page should look like if there is content in localStorage that has been saved previously.
 
-![alt text](./assets/images/Work-Day-Scheduler-filled.png)
+![alt text](./Assets/images/Work-Day-Scheduler-filled.png)
 
 
 
